@@ -31,11 +31,14 @@ class CatStore
         dao = CatDatabase.getInstance(context)!!.catDao()
     }
 
-    fun save(cat: Cat) = postTask(Runnable { dao.save(CatEntity(cat)) })
+    fun save(cat: Cat,callback: () -> Unit) = postTask(Runnable {
+        dao.save(CatEntity(cat))
+        callback()
+    })
 
-    fun load(callback: Callback) = postTask(Runnable {
+    fun load(callback: (Cat?) -> Unit) = postTask(Runnable {
         val cat = dao.load().firstOrNull()
-        handler.post { callback.onSuccess(cat) }
+        handler.post { callback(cat) }
     })
 
     fun clean() = postTask(Runnable {
@@ -61,10 +64,5 @@ class CatStore
         }
         taskQueue.forEach { dbHandler!!.post(it) }
         taskQueue.clear()
-    }
-
-    interface Callback {
-
-        fun onSuccess(cat: Cat?)
     }
 }
