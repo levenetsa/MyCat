@@ -7,7 +7,7 @@ import dagger.Provides
 
 @Module
 class MainActivityModule(
-    protected val mainActivity: MainActivity
+    private val mainActivity: MainActivity
 ) {
 
     @Provides

@@ -3,9 +3,9 @@ package com.lev.mycat
 import android.app.Application
 import com.lev.mycat.activity.dagger.MainActivityComponent
 import com.lev.mycat.activity.dagger.MainActivityModule
-import com.lev.mycat.dagger.component.AppComponent
-import com.lev.mycat.dagger.component.DaggerAppComponent
-import com.lev.mycat.dagger.module.AppModule
+import com.lev.mycat.dagger.AppComponent
+import com.lev.mycat.dagger.AppModule
+import com.lev.mycat.dagger.DaggerAppComponent
 
 class CatApplication : Application() {
 
@@ -25,6 +25,10 @@ class CatApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         appComponent =
-            DaggerAppComponent.builder().appModule(AppModule(this)).build()
+            DaggerAppComponent.builder().appModule(
+                AppModule(
+                    this
+                )
+            ).build()
     }
 }

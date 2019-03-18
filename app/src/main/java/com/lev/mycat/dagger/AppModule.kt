@@ -1,4 +1,4 @@
-package com.lev.mycat.dagger.module
+package com.lev.mycat.dagger
 
 import android.app.Application
 import dagger.Module
