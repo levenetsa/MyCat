@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "cats")
 class CatEntity(
     @PrimaryKey override var name: String,
-    picture: String
+    picture: String?
 ) : Cat(name, picture) {
     constructor(cat: Cat) : this(
         cat.name,
