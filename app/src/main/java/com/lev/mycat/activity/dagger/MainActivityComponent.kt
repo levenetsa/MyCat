@@ -1,6 +1,6 @@
 package com.lev.mycat.activity.dagger
 
-import androidx.appcompat.app.AppCompatActivity
+import com.lev.mycat.activity.MainActivity
 import dagger.Subcomponent
 
 
@@ -10,5 +10,5 @@ import dagger.Subcomponent
 )
 interface MainActivityComponent {
 
-    fun inject(mainActivity: AppCompatActivity)
+    fun inject(mainActivity: MainActivity)
 }

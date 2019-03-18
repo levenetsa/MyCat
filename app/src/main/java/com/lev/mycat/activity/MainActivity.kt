@@ -69,7 +69,6 @@ class MainActivity : AppCompatActivity() {
         val activityComponent = CatApplication.initMainActivityComponent(
             MainActivityModule(this)
         )
-        //TODO: re-locate to activity component
-        CatApplication.appComponent.inject(this)
+        activityComponent.inject(this)
     }
 }
