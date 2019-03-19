@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/distance_fragment">
+    <fragment
+            android:id="@+id/distance_fragment"
+            android:name="com.lev.mycat.cat.distance.DistanceFragment"
+            android:label="fragment_blank"
+            tools:layout="@layout/distance_fragment">
+        <action
+                android:id="@+id/add_cat"
+                app:destination="@id/add_cat_fragment"/>
+        <action
+                android:id="@+id/show_cat"
+                app:destination="@id/info_cat_fragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/add_cat_fragment"
+            android:name="com.lev.mycat.cat.add.AddCatFragment"
+            android:label="fragment_blank"
+            tools:layout="@layout/add_cat_fragment">
+        <action
+                android:id="@+id/show_cat_added"
+                app:destination="@id/info_cat_fragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/info_cat_fragment"
+            android:name="com.lev.mycat.cat.info.InfoCatFragment"
+            android:label="fragment_blank"
+            tools:layout="@layout/info_cat_fragment"/>
+</navigation>

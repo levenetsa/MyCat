@@ -5,12 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.lev.mycat.CatApplication
 import com.lev.mycat.R
 import com.lev.mycat.activity.dagger.MainActivityModule
+import com.lev.mycat.navigation.NavigationController
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var viewController: MainViewController
+    lateinit var navigationController: NavigationController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +21,6 @@ class MainActivity : AppCompatActivity() {
             MainActivityModule(this)
         )
         activityComponent.inject(this)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewController.destroy()
+        navigationController.setUpController(this)
     }
 }
