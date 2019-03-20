@@ -6,26 +6,31 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:gravity="center">
 
-    <ImageView
-            android:id="@+id/cat_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            app:srcCompat="@mipmap/ic_launcher"/>
-    <TextView
-            android:id="@+id/cat_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            tools:text="Spunky"/>
-    <TextView
-            android:id="@+id/distance_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            tools:text="256 km"/>
-    <TextView
-            android:text="@string/aware_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+    <ImageView android:id="@+id/cat_photo"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingBottom="8dp"
+               app:srcCompat="@mipmap/ic_launcher"/>
+    <TextView android:id="@+id/cat_name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:paddingBottom="8dp"
+              tools:text="Spunky"/>
+    <ProgressBar android:id="@+id/cat_progress_bar"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:visibility="gone"/>
+    <ProgressBar android:id="@+id/distance_progress_bar"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:visibility="gone"/>
+    <TextView android:id="@+id/distance_value"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:paddingBottom="8dp"
+              tools:text="256 km"/>
+    <TextView android:id="@+id/aware_text"
+              android:text="@string/aware_text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
 </LinearLayout>

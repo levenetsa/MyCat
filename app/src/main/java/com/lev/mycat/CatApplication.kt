@@ -20,6 +20,10 @@ class CatApplication : Application() {
             mainActivityComponent = appComponent.plus(activityModule)
             return mainActivityComponent!!
         }
+
+        fun clearMainActivityComponent() {
+            mainActivityComponent = null
+        }
     }
 
     override fun onCreate() {
