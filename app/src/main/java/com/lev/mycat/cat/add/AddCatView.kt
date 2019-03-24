@@ -1,6 +1,7 @@
 package com.lev.mycat.cat.add
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -40,6 +41,10 @@ constructor(
         takePhotoButton.setOnClickListener { listener?.onTakePhotoClicked() }
         chooseGalleryPhotoButton.setOnClickListener { listener?.onChoosePhotoClicked() }
     }
+
+    fun setName(name: String) = catName.setText(name)
+
+    fun setPhoto(bitmap: Bitmap) = catPhoto.setImageBitmap(bitmap)
 
     fun showError(message: String) {
         Toast.makeText(appContext, message, Toast.LENGTH_LONG).show()

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.lev.mycat">
 
+    <uses-feature android:name="android.hardware.camera"
+                  android:required="true" />
+
     <application
             android:name=".CatApplication"
             android:allowBackup="true"

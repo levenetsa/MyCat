@@ -1,9 +1,8 @@
 package com.lev.mycat.cat.distance
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Base64
 import android.view.View
+import com.lev.mycat.cat.add.strToBitmap
 import com.lev.mycat.db.Cat
 import javax.inject.Inject
 
@@ -51,15 +50,6 @@ constructor(
     }
 
     private fun getCatPhoto(cat: Cat): Bitmap? {
-        return cat.picture?.let { convertStringToBitmap(it) }
-    }
-
-    private fun convertStringToBitmap(base64String: String): Bitmap {
-        val decodedBytes = Base64.decode(base64String, Base64.DEFAULT)
-        return BitmapFactory.decodeByteArray(
-            decodedBytes,
-            0,
-            decodedBytes.size
-        )
+        return cat.picture?.let { strToBitmap(it) }
     }
 }

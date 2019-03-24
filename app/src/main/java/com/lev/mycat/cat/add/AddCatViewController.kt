@@ -1,12 +1,16 @@
 package com.lev.mycat.cat.add
 
+import android.graphics.Bitmap
 import android.view.View
+import com.lev.mycat.activity.MainActivity
 import javax.inject.Inject
 
 class AddCatViewController
 @Inject
 constructor(private val fragmentView: AddCatView,
-            private val model: AddCatModel) {
+            private val photoModel: AddCatPhotoModel,
+            private val model: AddCatModel,
+            private val activity: MainActivity) {
 
     private val modelListener = object : AddCatModel.OnDataChanged {
         override fun onCatSaved() {
@@ -16,7 +20,17 @@ constructor(private val fragmentView: AddCatView,
         override fun onError(message: String) {
             fragmentView.showError(message)
         }
+    }
 
+    private val photoModelListener = object : AddCatPhotoModel.OnImageSelected {
+        override fun onPhotoChanged(bitmap: Bitmap) {
+            fragmentView.setPhoto(bitmap)
+            model.photo = bitmap
+        }
+
+        override fun onError(code: Int) {
+            fragmentView.showError("Code from pic intent: $code")
+        }
     }
 
     private val viewListener = object : AddCatView.OnViewInteraction {
@@ -25,15 +39,15 @@ constructor(private val fragmentView: AddCatView,
         }
 
         override fun onSaveClicked() {
-            model.saveCat()
+            model.trySaveCat()
         }
 
         override fun onTakePhotoClicked() {
-            //photoModel.takePhoto()
+            photoModel.takePhoto()
         }
 
         override fun onChoosePhotoClicked() {
-            //photoModel.choosePhoto()
+            photoModel.choosePhoto()
 
         }
     }
@@ -41,12 +55,22 @@ constructor(private val fragmentView: AddCatView,
     fun init(view: View){
         fragmentView.init(view)
         model.init()
-        model.listener = modelListener
+        photoModel.init(activity)
+
+
         fragmentView.listener = viewListener
+        model.listener = modelListener
+        photoModel.listener = photoModelListener
+
+        fragmentView.setName(model.name)
+        model.photo?.let { fragmentView.setPhoto(it) }
     }
 
     fun destroy() {
+        photoModel.destroy()
+
         model.listener = null
         fragmentView.listener = null
+        photoModel.listener = null
     }
 }

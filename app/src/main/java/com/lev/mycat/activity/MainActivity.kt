@@ -1,5 +1,6 @@
 package com.lev.mycat.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.lev.mycat.CatApplication
@@ -16,6 +17,9 @@ class MainActivity : AppCompatActivity() {
 
     var activityComponent: MainActivityComponent? = null
 
+    private val resultListeners: MutableList<ResultListener> =
+        mutableListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,5 +35,20 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         activityComponent = null
         CatApplication.clearMainActivityComponent()
+    }
+
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) = resultListeners.forEach { it.onResult(requestCode, resultCode, data) }
+
+    fun addListener(listener: ResultListener) = resultListeners.add(listener)
+
+    fun removeListener(listener: ResultListener) =
+        resultListeners.remove(listener)
+
+    interface ResultListener {
+        fun onResult(requestCode: Int, resultCode: Int, data: Intent?)
     }
 }
