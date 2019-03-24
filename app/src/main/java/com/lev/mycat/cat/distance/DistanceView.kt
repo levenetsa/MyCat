@@ -12,14 +12,12 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import com.lev.mycat.R
-import com.lev.mycat.activity.MainActivity
 import javax.inject.Inject
 
 class DistanceView
 @Inject
 constructor(
-    private val appContext: Context,
-    activity: MainActivity
+    private val appContext: Context
 ) {
 
     companion object {
@@ -86,6 +84,10 @@ constructor(
         }
     }
 
+    fun replaceWithAddCat() {
+        //TODO implement replace with add cat
+    }
+
     private fun tryShowProgress(progressBar: ProgressBar) {
         if (distanceProgressBar.isVisible || catProgressBar.isVisible) {
             return
@@ -97,6 +99,8 @@ constructor(
             progressBar.visibility = GONE
             return
         }
+        distanceProgressBar.visibility = GONE
+        catProgressBar.visibility = GONE
     }
 
     fun showError(@StringRes messageId: Int = DEFAULT_ERROR_MESSAGE) =
