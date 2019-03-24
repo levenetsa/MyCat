@@ -3,4 +3,6 @@
     <string name="aware_text">aware form you</string>
     <string name="default_error_messtage">An unknown error has occurred.</string>
     <string name="distance_meters">%1$d Meters</string>
+    <string name="cat_name_label">Kity Name</string>
+    <string name="cat_photo_label">Your cat photo</string>
 </resources>

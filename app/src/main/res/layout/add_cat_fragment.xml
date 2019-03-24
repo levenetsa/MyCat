@@ -1,7 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:gravity="center">
 
+    <ImageView android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:layout_weight="5"
+               android:contentDescription="@string/cat_photo_label"
+               tools:srcCompat="@tools:sample/avatars[14]"
+               android:id="@+id/cat_photo"/>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:paddingBottom="10dp" android:paddingTop="10dp">
+        <ImageButton android:id="@+id/take_camera_photo"
+                     android:layout_height="wrap_content"
+                     android:layout_width="100dp"
+                     android:background="@drawable/press_selector"
+                     android:src="@drawable/ic_photo_camera_black_24dp"/>
+
+        <ImageButton android:id="@+id/choose_gallery_photo"
+                     android:layout_height="wrap_content"
+                     android:layout_width="100dp"
+                     android:background="@drawable/press_selector"
+                     android:src="@drawable/ic_photo_library_black_24dp"/>
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/cat_name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText android:id="@+id/cat_name_value"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:inputType="text"
+                  android:hint="@string/cat_name_label"
+                  tools:text="Thomas"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton android:id="@+id/cat_add_button"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:background="@drawable/press_selector"
+                 android:src="@drawable/ic_add_cat"/>
 </LinearLayout>
